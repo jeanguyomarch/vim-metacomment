@@ -1,4 +1,4 @@
-*vim-metacomment* MetaComment: a tools that frames and centers a key comment
+*vim-metacomment* MetaComment: creates a boxed comment with decorations
 
 ===============================================================================
 Contents -

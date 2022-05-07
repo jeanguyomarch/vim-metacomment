@@ -1,39 +1,39 @@
-vim-metacomment
-===============
+# vim-metacomment
 
-# Installation with Vundle
+## What does this thing do?
 
-* Get vundle here https://github.com/gmarik/vundle
-* Add in your `$HOME/.vimrc`: `Plugin 'jeanguyomarch/vim-metacomment'`
-* Re-run vim and call `:PluginInstall`
+Basically, type `:MetaComment Blah blah, some text`, this inserts in your
+buffer a boxed comment that looks like this, starting at the position of your
+cursor:
 
+```
+//============================================================================//
+//                            Blah blah, some text                            //
+//============================================================================//
+```
 
-# Usage
+## Installation
 
-* See a short demo here: http://jeanguyomarch.github.io/vim-metacomment/
-* Type `:help vim-metacomment` in vim
+With [vim-plug][1], add the following line to your vim/neovim configuration
+file:
 
-License
--------
+```
+Plug 'jeanguyomarch/vim-metacomment'
+```
 
-The MIT License (MIT)
+## Usage
 
-Copyright (c) 2013 - 2016 Jean Guyomarc'h
+In a nutshell, just use `:MetaComment <text>`. See the documentation (i.e.,
+`:help vim-metacomment`) for details.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+## Limitations
 
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
+* The comment box is ill-formed if the cursor is not in the first column.
+* The comment box does not support multi-line text.
+* The size of the comment box is fixed.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+## License
+
+See [`LICENSE.md`](LICENSE.md).
+
+[1]: https://github.com/junegunn/vim-plug
