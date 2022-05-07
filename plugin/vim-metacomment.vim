@@ -115,7 +115,7 @@ if !exists("g:MetaComment_footer_vim")
    let g:MetaComment_footer_vim = " ---------------------------------------------------------------------------- \""
 endif
 
-" VHDL (tpye --)
+" VHDL (type --)
 if !exists("g:MetaComment_header_vhdl")
    let g:MetaComment_header_vhdl = " -------------------------------------------------------------------------- --"
 endif
@@ -130,6 +130,23 @@ endif
 
 if !exists("g:MetaComment_footer_vhdl")
    let g:MetaComment_footer_vhdl = " -------------------------------------------------------------------------- --"
+endif
+
+" Lua (type --)
+if !exists("g:MetaComment_header_lua")
+   let g:MetaComment_header_lua = g:MetaComment_header_vhdl
+endif
+
+if !exists("g:MetaComment_right_lua")
+   let g:MetaComment_right_lua = g:MetaComment_right_vhdl
+endif
+
+if !exists("g:MetaComment_left_lua")
+   let g:MetaComment_left_lua = g:MetaComment_left_vhdl
+endif
+
+if !exists("g:MetaComment_footer_lua")
+   let g:MetaComment_footer_lua = g:MetaComment_footer_vhdl
 endif
 
 " LaTeX (type %)
@@ -266,6 +283,14 @@ function! s:MetaCommentVhdl(str)
       exec "normal 0d$i--" . g:MetaComment_footer_vhdl
 endfunction
 
+function! s:MetaCommentLua(str)
+      exec "normal i--" . g:MetaComment_header_lua
+      exec "normal o"
+      exec "normal 0d$i--" . g:MetaComment_left_lua . StringWithWhiteSpaces(a:str) . g:MetaComment_right_lua
+      exec "normal o"
+      exec "normal 0d$i--" . g:MetaComment_footer_lua
+endfunction
+
 function! s:MetaCommentLaTeX(str)
       exec "normal i%" . g:MetaComment_header_latex
       exec "normal o"
@@ -311,6 +336,8 @@ function! s:MetaComment(str)
       call s:MetaCommentVim(a:str)
    elseif ft == "vhdl"
       call s:MetaCommentVhdl(a:str)
+   elseif ft == "lua"
+      call s:MetaCommentLua(a:str)
    elseif ft == "tex" || ft == "mat"
       call s:MetaCommentLaTeX(a:str)
    elseif ft == "html"
@@ -318,7 +345,7 @@ function! s:MetaComment(str)
    elseif ft == "jinja"
       call s:MetaCommentJinja(a:str)
    else
-      echoerr("Unimplemented filetype '" . ft . "'. Please report to jean@guyomarch.bzh or fix it yourself (but then please let me know)")
+      echoerr("Sorry... unimplemented filetype '" . ft . "'.")
    endif
 
 endfunction
@@ -335,6 +362,7 @@ command! -nargs=1 MetaCommentSh call s:MetaCommentSh(<f-args>)
 command! -nargs=1 MetaCommentAsm call s:MetaCommentAsm(<f-args>)
 command! -nargs=1 MetaCommentVim call s:MetaCommentVim(<f-args>)
 command! -nargs=1 MetaCommentVhdl call s:MetaCommentVhdl(<f-args>)
+command! -nargs=1 MetaCommentLua call s:MetaCommentLua(<f-args>)
 command! -nargs=1 MetaCommentLaTeX call s:MetaCommentLaTeX(<f-args>)
 command! -nargs=1 MetaCommentHtml call s:MetaCommentHtml(<f-args>)
 

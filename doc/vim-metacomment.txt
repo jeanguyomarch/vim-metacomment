@@ -46,6 +46,7 @@ Specific commands exist to force a comment style. It is used the same way as :Me
 |    asm     |   ;        | :MetaCommentAsm   |
 |    vim     |   "        | :MetaCommentVim   |
 |    vhdl    |   --       | :MetaCommentVhdl  |
+|    lua     |   --       | :MetaCommentLua   |
 |    latex   |   %        | :MetaCommentLaTeX |
 |    html    |   <!-- --> | :MetaCommentHtml  |
 *------------*------------*-------------------*
